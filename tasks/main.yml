@@ -1,0 +1,11 @@
+---
+
+- name: install snapraid
+  include_tasks: install-debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: configure snapraid
+  include_tasks: configure.yml
+
+- name: automate parity checks
+  include_tasks: parity-checks.yml
