@@ -9,14 +9,21 @@
   git:
     repo: https://github.com/IronicBadger/docker-snapraid.git
     dest: /tmp/snapraid
-    update: yes
-  when: is_installed|failed
+    force: yes
+  when: is_installed is failed
+
+- name: build snapraid | make build script executable
+  file:
+    path: /tmp/snapraid/build.sh
+    mode: 0775
+  when: is_installed is failed
 
 - name: build snapraid | build .deb package
-  shell: /tmp/snapraid/build.sh
-  when: is_installed|failed
+  shell: cd /tmp/snapraid && ./build.sh
+  when: is_installed is failed
 
 - name: build snapraid | install built .deb
   apt:
-    deb: /tmp/snapraid/snapraid*.deb
+    deb: /tmp/snapraid/build/snapraid-from-source.deb
     state: present
+  when: is_installed is failed
