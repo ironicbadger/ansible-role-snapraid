@@ -12,7 +12,7 @@ content /mnt/disk2/.snapraid.content
 content /mnt/disk3/.snapraid.content
 
 # Data disks
-{% for disk in fstab_disks %}
+{% for disk in data_disks %}
 disk d{{ loop.index }} {{ disk.path }}
 {% endfor %}
 

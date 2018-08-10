@@ -23,5 +23,5 @@
     hour: "{{ item.hour | default ('00') }}"
     dom: "{{ item.dom|default('*') }}"
   with_items:
-    - snapraid_cron_jobs
+    - "{{ snapraid_cron_jobs }}"
     
