@@ -1,0 +1,26 @@
+# {{ ansible_managed }}
+#
+# SnapRAID configuration file
+
+# Parity location(s)
+parity /mnt/parity1/snapraid.parity
+
+# Content file location(s)
+content /var/snapraid.content
+content /mnt/disk1/.snapraid.content
+content /mnt/disk2/.snapraid.content
+content /mnt/disk3/.snapraid.content
+
+# Data disks
+{% for disk in fstab_disks %}
+disk d{{ loop.index }} {{ disk.path }}
+{% endfor %}
+
+# Excludes hidden files and directories (uncomment to enable).
+{% if snapraid_config_hidden_files_enabled %}
+{{ snapraid_config_hidden_files }}
+{% endif %}
+
+{% for item in snapraid_config_excludes %}
+exclude {{ item }}
+{% endfor}
