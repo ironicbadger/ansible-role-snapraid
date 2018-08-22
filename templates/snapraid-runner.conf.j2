@@ -5,6 +5,8 @@ executable = {{ snapraid_bin_path }}
 config = {{ snapraid_config_path }}
 ; abort operation if there are more deletes than this, set to -1 to disable
 deletethreshold = 250
+; if you want touch to be run each time
+touch = {{ snapraid_touch }}
 
 [logging]
 ; logfile to write to, leave empty to disable

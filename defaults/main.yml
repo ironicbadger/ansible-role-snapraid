@@ -18,6 +18,7 @@ snapraid_run_command: "python2 {{ snapraid_run_bin }} -c {{ snapraid_run_conf}}"
 snapraid_run_scrub: true
 snapraid_run_scrub_percent: 22
 snapraid_run_scrub_age: 8
+snapraid_touch: true
 
 snapraid_cron_jobs:
   - { job: '{{ snapraid_run_command }}', name: 'snapraid_runner', weekday: '*', hour: '08' }
