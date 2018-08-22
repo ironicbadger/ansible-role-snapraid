@@ -4,7 +4,7 @@
   shell: "dpkg-query -W '{{ snapraid_apt_package_name }}'"
   ignore_errors: True
   register: is_installed
-  changed_when: is_installed
+  changed_when: "is_installed.rc != 0"
 
 - name: build snapraid | clone git repo
   git:
