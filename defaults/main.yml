@@ -23,4 +23,4 @@ snapraid_run_scrub_age: 8
 snapraid_touch: true
 
 snapraid_cron_jobs:
-  - { job: '{{ snapraid_run_command }}', name: 'snapraid_runner', weekday: '*', hour: '08' }
+  - { job: '{{ snapraid_run_command }}', name: 'snapraid_runner', weekday: '*', hour: '01' }
