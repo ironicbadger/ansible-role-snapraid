@@ -3,13 +3,17 @@
 # SnapRAID configuration file
 
 # Parity location(s)
-parity /mnt/parity1/snapraid.parity
+{% for disk in parity_disks %}
+parity {{ disk.path }}/snapraid.parity
+{% endfor %}
 
 # Content file location(s)
 content /var/snapraid.content
-content /mnt/disk1/.snapraid.content
-content /mnt/disk2/.snapraid.content
-content /mnt/disk3/.snapraid.content
+{% for disk in data_disks %}
+{% if disk.content == true %}
+content {{ disk.path }}/.snapraid.content
+{% endif %}
+{% endfor %}
 
 # Data disks
 {% for disk in data_disks %}
