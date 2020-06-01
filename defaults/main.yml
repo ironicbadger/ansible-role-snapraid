@@ -16,7 +16,7 @@ snapraid_config_path: /etc/snapraid.conf
 snapraid_run_path: /opt/snapraid-runner/snapraid-runner
 snapraid_run_conf: "{{ snapraid_run_path }}.conf"
 snapraid_run_bin: "{{ snapraid_run_path }}.py"
-snapraid_run_command: "python2 {{ snapraid_run_bin }} -c {{ snapraid_run_conf}} && curl -fsS --retry 3 https://hc-ping.com/{{ snapraid_healthcheck_io_uuid }} > /dev/null"
+snapraid_run_command: "python3 {{ snapraid_run_bin }} -c {{ snapraid_run_conf}} && curl -fsS --retry 3 https://hc-ping.com/{{ snapraid_healthcheck_io_uuid }} > /dev/null"
 snapraid_run_scrub: true
 snapraid_run_scrub_percent: 22
 snapraid_run_scrub_age: 8
