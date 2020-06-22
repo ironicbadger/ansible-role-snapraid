@@ -2,6 +2,7 @@
 
 snapraid_apt_package_name: snapraid
 snapraid_bin_path: /usr/local/bin/snapraid
+snapraid_force_install: false
 
 snapraid_healthcheck_io_uuid: ""
 
