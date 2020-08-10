@@ -6,25 +6,29 @@
   register: is_installed
   changed_when: "is_installed.rc != 0"
 
+- name: install snapraid?
+  set_fact:
+    install_snapraid: "{{ snapraid_force_install is true or is_installed is failed }}"
+
 - name: build snapraid | clone git repo
   git:
     repo: https://github.com/IronicBadger/docker-snapraid.git
     dest: /tmp/snapraid
     force: yes
-  when: is_installed is failed
+  when: install_snapraid
 
 - name: build snapraid | make build script executable
   file:
     path: /tmp/snapraid/build.sh
     mode: 0775
-  when: is_installed is failed
+  when: install_snapraid
 
 - name: build snapraid | build .deb package
   shell: cd /tmp/snapraid && ./build.sh
-  when: is_installed is failed
+  when: install_snapraid
 
 - name: build snapraid | install built .deb
   apt:
     deb: /tmp/snapraid/build/snapraid-from-source.deb
     state: present
-  when: is_installed is failed
+  when: install_snapraid

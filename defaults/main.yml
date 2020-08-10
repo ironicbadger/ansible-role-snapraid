@@ -2,11 +2,14 @@
 
 snapraid_apt_package_name: snapraid
 snapraid_bin_path: /usr/local/bin/snapraid
+snapraid_force_install: false
 
 snapraid_healthcheck_io_uuid: ""
 
 snapraid_email_address: ""
 snapraid_gmail_pass: ""
+snapraid_email_address_from: "{{ snapraid_email_address }}"
+snapraid_email_address_to: "{{ snapraid_email_address }}"
 
 snapraid_config_excludes: []
 snapraid_config_hidden_files_enabled: false
