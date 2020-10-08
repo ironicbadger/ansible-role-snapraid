@@ -10,6 +10,7 @@ snapraid_email_address: ""
 snapraid_gmail_pass: ""
 snapraid_email_address_from: "{{ snapraid_email_address }}"
 snapraid_email_address_to: "{{ snapraid_email_address }}"
+snapraid_email_sendon: "error"
 
 snapraid_config_excludes: []
 snapraid_config_hidden_files_enabled: false
