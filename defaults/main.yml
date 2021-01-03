@@ -12,6 +12,10 @@ snapraid_email_address_from: "{{ snapraid_email_address }}"
 snapraid_email_address_to: "{{ snapraid_email_address }}"
 snapraid_email_sendon: "error"
 
+snapraid_smtp_host: smtp.gmail.com
+snapraid_smtp_port: 465
+snapraid_use_ssl: true
+
 snapraid_config_excludes: []
 snapraid_config_hidden_files_enabled: false
 snapraid_config_hidden_files: nohidden
