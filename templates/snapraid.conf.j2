@@ -22,7 +22,7 @@ content {{ disk.path }}/.snapraid.content
 
 # Data disks
 {% for disk in data_disks %}
-data d{{ loop.index }} {{ disk.path }}
+data d{{ loop.index }} {{ disk.path }}{{ disk.data_path | default('') }}
 {% endfor %}
 
 # Excludes hidden files and directories (uncomment to enable).
