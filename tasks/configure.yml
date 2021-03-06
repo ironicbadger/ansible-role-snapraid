@@ -1,5 +1,20 @@
 ---
 
+- name: check valid configuration
+  block:
+    - fail:
+        msg: No data disks defined
+      when: data_disks | length == 0
+    - fail:
+        msg: No parity disks defined
+      when: parity_disks | length == 0
+    - fail:
+        msg: No content files defined
+      when:
+        - snapraid_content == ''
+        - data_disks | selectattr('content') | length == 0
+        - parity_disks | selectattr('content') | length == 0
+
 - name: install snapraid config file
   template:
     src: snapraid.conf.j2
