@@ -8,7 +8,9 @@
 {% endfor %}
 
 # Content file location(s)
-content /var/snapraid.content
+{% if snapraid_content != '' %}
+content {{ snapraid_content }}
+{% endif %}
 {% for disk in parity_disks %}
 {% if disk.content == true %}
 content {{ disk.path }}/snapraid.content
@@ -22,7 +24,7 @@ content {{ disk.path }}/.snapraid.content
 
 # Data disks
 {% for disk in data_disks %}
-data d{{ loop.index }} {{ disk.path }}
+data d{{ loop.index }} {{ disk.path }}{{ disk.data_path | default('') }}
 {% endfor %}
 
 # Excludes hidden files and directories (uncomment to enable).

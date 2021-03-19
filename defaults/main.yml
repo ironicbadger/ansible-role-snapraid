@@ -16,6 +16,8 @@ snapraid_smtp_host: smtp.gmail.com
 snapraid_smtp_port: 465
 snapraid_use_ssl: true
 
+snapraid_content: /var/snapraid.content
+
 snapraid_config_excludes: []
 snapraid_config_hidden_files_enabled: false
 snapraid_config_hidden_files: nohidden

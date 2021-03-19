@@ -8,7 +8,7 @@
 
 - name: install snapraid?
   set_fact:
-    install_snapraid: "{{ snapraid_force_install is true or is_installed is failed }}"
+    install_snapraid: "{{ snapraid_force_install == true or is_installed.failed == true }}"
 
 - name: build snapraid | clone git repo
   git:
