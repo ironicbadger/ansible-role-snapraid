@@ -8,6 +8,7 @@ snapraid_bin_path: /usr/local/bin/snapraid
 snapraid_force_install: false
 
 snapraid_runner_healthcheck_io_uuid: ""
+snapraid_healthcheck_io_host: https://hc-ping.com
 
 snapraid_runner_email_address: ""
 snapraid_runner_gmail_pass: ""
@@ -29,7 +30,7 @@ snapraid_config_path: /etc/snapraid.conf
 snapraid_runner_path: /opt/snapraid-runner/snapraid-runner
 snapraid_runner_conf: "{{ snapraid_runner_path }}.conf"
 snapraid_runner_bin: "{{ snapraid_runner_path }}.py"
-snapraid_runner_command: "python3 {{ snapraid_runner_bin }} -c {{ snapraid_runner_conf}} && curl -fsS --retry 3 https://hc-ping.com/{{ snapraid_runner_healthcheck_io_uuid }} > /dev/null"
+snapraid_runner_command: "python3 {{ snapraid_runner_bin }} -c {{ snapraid_runner_conf }} && curl -fsS --retry 3 {{ snapraid_healthcheck_io_host }}/{{ snapraid_runner_healthcheck_io_uuid }} > /dev/null"
 snapraid_runner_scrub: true
 snapraid_scrub_percent: 22
 snapraid_scrub_age: 8
@@ -41,8 +42,10 @@ snapraid_runner_cron_jobs:
 snapraid_sync_schedule:
   minute: 0
   hour: 0
+snapraid_sync_healthcheck_io_uuid: ""
 
 snapraid_scrub_schedule:
   minute: 0
   hour: 0
   weekday: 0
+snapraid_scrub_healthcheck_io_uuid: ""
