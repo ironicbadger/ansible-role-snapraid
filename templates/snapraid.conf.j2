@@ -3,17 +3,17 @@
 # SnapRAID configuration file
 
 # Parity location(s)
-{% for disk in parity_disks %}
+{% for disk in snapraid_parity_disks %}
 {{ loop.index}}-parity {{ disk.path }}/snapraid.parity
 {% endfor %}
 
 # Content file location(s)
-{% for disk in parity_disks %}
+{% for disk in snapraid_parity_disks %}
 {% if disk.content == true %}
 content {{ disk.path }}/snapraid.content
 {% endif %}
 {% endfor %}
-{% for disk in data_disks %}
+{% for disk in snapraid_data_disks %}
 {% if disk.content == true %}
 content {{ disk.path }}/.snapraid.content
 {% endif %}
@@ -23,7 +23,7 @@ content {{ content_file }}
 {% endfor %}
 
 # Data disks
-{% for disk in data_disks %}
+{% for disk in snapraid_data_disks %}
 data d{{ loop.index }} {{ disk.path }}{{ disk.data_path | default('') }}
 {% endfor %}
 

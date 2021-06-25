@@ -4,16 +4,16 @@
   block:
     - fail:
         msg: No data disks defined
-      when: data_disks | length == 0
+      when: snapraid_data_disks | length == 0
     - fail:
         msg: No parity disks defined
-      when: parity_disks | length == 0
+      when: snapraid_parity_disks | length == 0
     - fail:
         msg: No content files defined
       when:
         - snapraid_content_files | length == 0
-        - data_disks | selectattr('content') | length == 0
-        - parity_disks | selectattr('content') | length == 0
+        - snapraid_data_disks | selectattr('content') | length == 0
+        - snapraid_parity_disks | selectattr('content') | length == 0
 
 - name: install snapraid config file
   template:
