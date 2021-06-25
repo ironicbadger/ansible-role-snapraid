@@ -6,7 +6,7 @@ config = {{ snapraid_config_path }}
 ; abort operation if there are more deletes than this, set to -1 to disable
 deletethreshold = 250
 ; if you want touch to be run each time
-touch = {{ snapraid_touch }}
+touch = {{ snapraid_runner_touch }}
 
 [logging]
 ; logfile to write to, leave empty to disable
@@ -16,24 +16,24 @@ maxsize = 5000
 
 [email]
 ; when to send an email, comma-separated list of [success, error]
-sendon = {{ snapraid_email_sendon }}
+sendon = {{ snapraid_runner_smtp_host }}
 ; set to false to get full program output via email
 short = true
 subject = [SnapRAID] Status Report:
-from = {{ snapraid_email_address_from }}
-to = {{ snapraid_email_address_to }}
+from = {{ snapraid_runner_email_address_from }}
+to = {{ snapraid_runner_email_address_to }}
 
 [smtp]
-host = {{ snapraid_smtp_host }}
+host = {{ snapraid_runner_smtp_host }}
 ; leave empty for default port
-port = {{ snapraid_smtp_port }}
+port = {{ snapraid_runner_smtp_port }}
 ; set to "true" to activate
-ssl = {{ snapraid_use_ssl }}
-user = {{ snapraid_email_address }}
-password = {{ snapraid_gmail_pass }}
+ssl = {{ snapraid_runner_use_ssl }}
+user = {{ snapraid_runner_email_address }}
+password = {{ snapraid_runner_gmail_pass }}
 
 [scrub]
 ; set to true to run scrub after sync
-enabled = {{ snapraid_run_scrub }}
-percentage = {{ snapraid_run_scrub_percent }}
-older-than = {{ snapraid_run_scrub_age }}
+enabled = {{ snapraid_runner_scrub }}
+percentage = {{ snapraid_runner_scrub_percent }}
+older-than = {{ snapraid_runner_scrub_age }}
