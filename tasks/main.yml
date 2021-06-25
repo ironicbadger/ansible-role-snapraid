@@ -10,3 +10,7 @@
 - name: install and configure snapraid-runner
   include_tasks: parity-checks.yml
   when: snapraid_runner
+
+- name: schedule snapraid
+  include_tasks: cron.yml
+  when: not snapraid_runner
