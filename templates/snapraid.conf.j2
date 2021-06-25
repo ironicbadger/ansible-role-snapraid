@@ -8,9 +8,6 @@
 {% endfor %}
 
 # Content file location(s)
-{% if snapraid_content != '' %}
-content {{ snapraid_content }}
-{% endif %}
 {% for disk in parity_disks %}
 {% if disk.content == true %}
 content {{ disk.path }}/snapraid.content
@@ -20,6 +17,9 @@ content {{ disk.path }}/snapraid.content
 {% if disk.content == true %}
 content {{ disk.path }}/.snapraid.content
 {% endif %}
+{% endfor %}
+{% for content_file in snapraid_content_files %}
+content {{ content_file }}
 {% endfor %}
 
 # Data disks

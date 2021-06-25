@@ -11,7 +11,7 @@
     - fail:
         msg: No content files defined
       when:
-        - snapraid_content == ''
+        - snapraid_content_files | length == 0
         - data_disks | selectattr('content') | length == 0
         - parity_disks | selectattr('content') | length == 0
 

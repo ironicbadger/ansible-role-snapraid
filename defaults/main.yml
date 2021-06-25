@@ -20,7 +20,8 @@ snapraid_runner_smtp_host: smtp.gmail.com
 snapraid_runner_smtp_port: 465
 snapraid_runner_use_ssl: true
 
-snapraid_content: /var/snapraid.content
+snapraid_content_files:
+  - /var/snapraid.content
 
 snapraid_config_excludes: []
 snapraid_config_hidden_files_enabled: false
