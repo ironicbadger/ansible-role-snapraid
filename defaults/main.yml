@@ -30,7 +30,7 @@ snapraid_config_path: /etc/snapraid.conf
 snapraid_runner_path: /opt/snapraid-runner/snapraid-runner
 snapraid_runner_conf: "{{ snapraid_runner_path }}.conf"
 snapraid_runner_bin: "{{ snapraid_runner_path }}.py"
-snapraid_runner_command: "python3 {{ snapraid_runner_bin }} -c {{ snapraid_runner_conf }} && curl -fsS --retry 3 {{ snapraid_healthcheck_io_host }}/{{ snapraid_runner_healthcheck_io_uuid }} > /dev/null"
+snapraid_runner_command: "python3 {{ snapraid_runner_bin }} -c {{ snapraid_runner_conf }} {% if snapraid_runner_healthcheck_io_uuid %}&& curl -fsS --retry 3 {{ snapraid_healthcheck_io_host }}/{{ snapraid_runner_healthcheck_io_uuid }} > /dev/null{% endif %}"
 snapraid_runner_scrub: true
 snapraid_scrub_percent: 22
 snapraid_scrub_age: 8
