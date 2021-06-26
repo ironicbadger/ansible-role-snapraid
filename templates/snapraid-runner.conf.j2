@@ -4,7 +4,7 @@ executable = {{ snapraid_bin_path }}
 ; path to the snapraid config to be used
 config = {{ snapraid_config_path }}
 ; abort operation if there are more deletes than this, set to -1 to disable
-deletethreshold = 250
+deletethreshold = {{ snapraid_runner_delete_threshold }}
 ; if you want touch to be run each time
 touch = {{ snapraid_runner_touch }}
 
