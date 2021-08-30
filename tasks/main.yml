@@ -8,7 +8,7 @@
   include_tasks: configure.yml
 
 - name: install and configure snapraid-runner
-  include_tasks: parity-checks.yml
+  include_tasks: snapraid-runner.yml
   when: snapraid_runner
 
 - name: schedule snapraid
