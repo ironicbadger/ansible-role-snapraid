@@ -8,10 +8,10 @@
 - name: install snapraid-runner configuration file
   template:
     src: snapraid-runner.conf.j2
-    dest: "{{ snapraid_run_conf }}"
+    dest: "{{ snapraid_runner_conf }}"
     owner: root
     group: root
-    mode: 0775  
+    mode: 0775
 
 - name: setup cron job snapraid-runner
   cron:
@@ -23,5 +23,4 @@
     hour: "{{ item.hour | default ('00') }}"
     dom: "{{ item.dom|default('*') }}"
   with_items:
-    - "{{ snapraid_cron_jobs }}"
-    
+    - "{{ snapraid_runner_cron_jobs }}"
