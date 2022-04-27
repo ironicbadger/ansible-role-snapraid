@@ -11,7 +11,7 @@ snapraid_runner_healthcheck_io_uuid: ""
 snapraid_healthcheck_io_host: https://hc-ping.com
 
 snapraid_runner_email_address: ""
-snapraid_runner_gmail_pass: ""
+snapraid_runner_email_pass: ""
 snapraid_runner_email_address_from: "{{ snapraid_runner_email_address }}"
 snapraid_runner_email_address_to: "{{ snapraid_runner_email_address }}"
 snapraid_runner_email_sendon: "error"
