@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   author: Alex Kretzschmar
+  role_name: snapraid
   description: Installs SnapRAID and configures automatic parity runs
   issue_tracker_url: https://github.com/ironicbadger/ansible-role-snapraid/issues
   license: GPLv2
