@@ -1,7 +1,7 @@
 ---
 
 - name: check whether snapraid is installed
-  shell: "dpkg-query -W '{{ snapraid_apt_package_name }}'"
+  shell: "dpkg-query -W '{{ snapraid_package_name }}'"
   ignore_errors: True
   register: is_installed
   changed_when: "is_installed.rc != 0"
@@ -12,7 +12,7 @@
 
 - name: build snapraid | clone git repo
   git:
-    repo: https://github.com/IronicBadger/docker-snapraid.git
+    repo: "{{ snapraid_build_repos }}"
     dest: /tmp/snapraid
     force: yes
   when: install_snapraid

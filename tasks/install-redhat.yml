@@ -1,0 +1,37 @@
+---
+
+- name: check packages
+  package_facts:
+    manager: auto
+- name: install snapraid?
+  ansible.builtin.set_fact:
+    install_snapraid: "{{ snapraid_force_install == true or snapraid_package_name not in ansible_facts.packages }}"
+
+- name: build snapraid | clone git repo
+  git:
+    repo: "{{ snapraid_build_repos }}"
+    dest: /tmp/snapraid
+    force: yes
+  when: install_snapraid
+
+- name: build snapraid | make build script executable
+  file:
+    path: /tmp/snapraid/build.sh
+    mode: 0775
+  when: install_snapraid
+
+- name: build snapraid | get info about latest snapraid release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/amadvance/snapraid/releases/latest
+    return_content: yes
+  register: snapraid_latest
+
+- name: build snapraid | build .rpm package
+  shell: "cd /tmp/snapraid && ./build.sh {{ snapraid_latest.json.tag_name | regex_search('\\d+\\.\\d+') }} rpm"
+  when: install_snapraid
+
+- name: build snapraid | install built .rpm
+  ansible.builtin.dnf:
+    name: /tmp/snapraid/build/snapraid-from-source.rpm
+    state: present
+  when: install_snapraid
