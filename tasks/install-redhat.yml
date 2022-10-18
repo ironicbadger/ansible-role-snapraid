@@ -34,4 +34,5 @@
   ansible.builtin.dnf:
     name: /tmp/snapraid/build/snapraid-from-source.rpm
     state: present
+    disable_gpg_check: true
   when: install_snapraid
