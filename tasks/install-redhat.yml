@@ -25,6 +25,7 @@
     url: https://api.github.com/repos/amadvance/snapraid/releases/latest
     return_content: yes
   register: snapraid_latest
+  when: install_snapraid
 
 - name: build snapraid | build .rpm package
   shell: "cd /tmp/snapraid && ./build.sh {{ snapraid_latest.json.tag_name | regex_search('\\d+\\.\\d+') }} rpm"
