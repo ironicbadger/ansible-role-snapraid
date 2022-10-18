@@ -5,7 +5,8 @@ snapraid_runner: true
 
 snapraid_build_repos: https://github.com/IronicBadger/docker-snapraid.git
 
-snapraid_package_name: snapraid
+snapraid_package_name: "{{ snapraid_apt_package_name }}"
+snapraid_apt_package_name: snapraid
 snapraid_bin_path: /usr/local/bin/snapraid
 snapraid_force_install: false
 
