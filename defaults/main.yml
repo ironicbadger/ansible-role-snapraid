@@ -23,6 +23,8 @@ snapraid_runner_smtp_host: smtp.gmail.com
 snapraid_runner_smtp_port: 465
 snapraid_runner_use_ssl: true
 snapraid_runner_use_tls: false
+snapraid_runner_smtp_user: "{{ snapraid_runner_email_address }}"
+snapraid_runner_smtp_pass: "{{ snapraid_runner_email_pass }}"
 
 snapraid_content_files:
   - /var/snapraid.content
