@@ -36,6 +36,6 @@ data d{{ loop.index }} {{ disk.path }}{{ disk.data_path | default('') }}
 exclude {{ item }}
 {% endfor %}
 
-{% if snapraid_autosave_enabled %}
-autosave {{ snapraid_autosave_size_gb }}
+{% if snapraid_autosave.enabled %}
+autosave {{ snapraid_autosave.size_gigabytes }}
 {% endif %}

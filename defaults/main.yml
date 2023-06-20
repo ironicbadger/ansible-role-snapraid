@@ -7,8 +7,9 @@ snapraid_apt_package_name: snapraid
 snapraid_bin_path: /usr/local/bin/snapraid
 snapraid_force_install: false
 
-snapraid_autosave_enabled: false
-snapraid_autosave_size_gb: 1024
+snapraid_autosave:
+  enabled: false
+  size_gigabytes: 1024
 
 snapraid_runner_healthcheck_io_uuid: ""
 snapraid_healthcheck_io_host: https://hc-ping.com
