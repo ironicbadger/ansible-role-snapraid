@@ -35,3 +35,8 @@ data d{{ loop.index }} {{ disk.path }}{{ disk.data_path | default('') }}
 {% for item in snapraid_config_excludes %}
 exclude {{ item }}
 {% endfor %}
+
+{% if snapraid_autosave.enabled %}
+# Autosaves the state while syncing and scrubbing after the specified amount of GB processed.
+autosave {{ snapraid_autosave.size_gigabytes }}
+{% endif %}
