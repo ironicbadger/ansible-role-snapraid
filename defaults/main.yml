@@ -3,6 +3,11 @@
 snapraid_install: true
 snapraid_runner: true
 
+# Install mode: defines where to download and install the package from
+# - "from_source" will use the docker based source build process
+# - "package_manager" will install from the linux distrubution package manager
+snapraid_install_mode: from_source
+
 snapraid_apt_package_name: snapraid
 snapraid_bin_path: /usr/local/bin/snapraid
 snapraid_force_install: false
