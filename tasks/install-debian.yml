@@ -14,27 +14,27 @@
   apt:
     name: "{{ snapraid_apt_package_name }}"
     state: present
-  when: (install_snapraid) and (snapraid_install_mode == package_manager)
+  when: install_snapraid and snapraid_install_mode == "package_manager"
 
 - name: build snapraid | clone git repo
   git:
     repo: https://github.com/IronicBadger/docker-snapraid.git
     dest: /tmp/snapraid
     force: yes
-  when: install_snapraid and (snapraid_install_mode == from_source)
+  when: install_snapraid and snapraid_install_mode == "from_source"
 
 - name: build snapraid | make build script executable
   file:
     path: /tmp/snapraid/build.sh
     mode: 0775
-  when: install_snapraid and (snapraid_install_mode == from_source)
+  when: install_snapraid and snapraid_install_mode == "from_source"
 
 - name: build snapraid | build .deb package
   shell: cd /tmp/snapraid && ./build.sh
-  when: install_snapraid and (snapraid_install_mode == from_source)
+  when: install_snapraid and snapraid_install_mode == "from_source"
 
 - name: build snapraid | install built .deb
   apt:
     deb: /tmp/snapraid/build/snapraid-from-source.deb
     state: present
-  when: install_snapraid and (snapraid_install_mode == from_source)
+  when: install_snapraid and snapraid_install_mode == "from_source"
