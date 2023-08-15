@@ -2,6 +2,7 @@
 
 snapraid_install: true
 snapraid_runner: true
+snapraid_runner_cronjob: true
 
 snapraid_apt_package_name: snapraid
 snapraid_bin_path: /usr/local/bin/snapraid
