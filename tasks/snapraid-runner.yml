@@ -11,9 +11,10 @@
     dest: "{{ snapraid_runner_conf }}"
     owner: root
     group: root
-    mode: 0775
+    mode: 0770
 
 - name: setup cron job snapraid-runner
+  when: snapraid_runner_cronjob
   cron:
     user: "root"
     job: "{{ item.job }}"
