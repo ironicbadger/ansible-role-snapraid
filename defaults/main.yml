@@ -15,6 +15,7 @@ snapraid_runner_email_pass: ""
 snapraid_runner_email_address_from: "{{ snapraid_runner_email_address }}"
 snapraid_runner_email_address_to: "{{ snapraid_runner_email_address }}"
 snapraid_runner_email_sendon: "error"
+snapraid_runner_email_subject: "[SnapRAID] Status Report:"
 
 snapraid_runner_smtp_host: smtp.gmail.com
 snapraid_runner_smtp_port: 465
