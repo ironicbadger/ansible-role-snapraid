@@ -3,6 +3,9 @@
 snapraid_install: true
 snapraid_runner: true
 
+snapraid_build_repos: https://github.com/IronicBadger/docker-snapraid.git
+
+snapraid_package_name: "{{ snapraid_apt_package_name }}"
 snapraid_apt_package_name: snapraid
 snapraid_bin_path: /usr/local/bin/snapraid
 snapraid_force_install: false
@@ -20,6 +23,9 @@ snapraid_runner_email_subject: "[SnapRAID] Status Report:"
 snapraid_runner_smtp_host: smtp.gmail.com
 snapraid_runner_smtp_port: 465
 snapraid_runner_use_ssl: true
+snapraid_runner_use_tls: false
+snapraid_runner_smtp_user: "{{ snapraid_runner_email_address }}"
+snapraid_runner_smtp_pass: "{{ snapraid_runner_email_pass }}"
 
 snapraid_content_files:
   - /var/snapraid.content
