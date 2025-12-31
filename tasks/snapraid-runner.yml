@@ -2,7 +2,7 @@
 
 - name: clone snapraid-runner
   git:
-    repo: https://github.com/Chronial/snapraid-runner.git
+    repo: "{{ snapraid_runner_repo }}"
     dest: /opt/snapraid-runner
 
 - name: install snapraid-runner configuration file

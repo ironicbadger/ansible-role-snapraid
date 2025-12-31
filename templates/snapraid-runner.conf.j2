@@ -37,3 +37,9 @@ password = {{ snapraid_runner_email_pass }}
 enabled = {{ snapraid_runner_scrub }}
 percentage = {{ snapraid_scrub_percent }}
 older-than = {{ snapraid_scrub_age }}
+
+[pushover]
+sendon = {{ snapraid_runner_pushover_sendon }}
+token = {{ snapraid_runner_pushover_token }}
+user = {{ snapraid_runner_pushover_user }}
+maxsize = {{ snapraid_runner_pushover_maxsize }}

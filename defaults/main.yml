@@ -2,6 +2,7 @@
 
 snapraid_install: true
 snapraid_runner: true
+snapraid_runner_repo: "https://github.com/Chronial/snapraid-runner.git"
 
 snapraid_apt_package_name: snapraid
 snapraid_bin_path: /usr/local/bin/snapraid
@@ -21,6 +22,11 @@ snapraid_runner_smtp_host: smtp.gmail.com
 snapraid_runner_smtp_port: 465
 snapraid_runner_use_ssl: true
 
+snapraid_runner_pushover_token: ""
+snapraid_runner_pushover_user: ""
+snapraid_runner_pushover_sendon: "error,success"
+snapraid_runner_pushover_maxsize: 1024
+
 snapraid_content_files:
   - /var/snapraid.content
 
@@ -32,7 +38,7 @@ snapraid_config_path: /etc/snapraid.conf
 snapraid_runner_path: /opt/snapraid-runner/snapraid-runner
 snapraid_runner_conf: "{{ snapraid_runner_path }}.conf"
 snapraid_runner_bin: "{{ snapraid_runner_path }}.py"
-snapraid_runner_command: "python3 {{ snapraid_runner_bin }} -c {{ snapraid_runner_conf }} {% if snapraid_runner_healthcheck_io_uuid %}&& curl -fsS -m 10 --retry 5 -o /dev/null {{ snapraid_healthcheck_io_host }}/{{ snapraid_runner_healthcheck_io_uuid }} > /dev/null{% endif %}"
+snapraid_runner_command: "{% if snapraid_runner_healthcheck_io_uuid %}curl -fsS -m 10 --retry 5 -o /dev/null {{ snapraid_healthcheck_io_host }}/{{ snapraid_runner_healthcheck_io_uuid }}/start > /dev/null &&{% endif %} python3 {{ snapraid_runner_bin }} -c {{ snapraid_runner_conf }} {% if snapraid_runner_healthcheck_io_uuid %}&& curl -fsS -m 10 --retry 5 -o /dev/null {{ snapraid_healthcheck_io_host }}/{{ snapraid_runner_healthcheck_io_uuid }} > /dev/null{% endif %}"
 snapraid_runner_scrub: true
 snapraid_scrub_percent: 22
 snapraid_scrub_age: 8
